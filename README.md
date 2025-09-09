@@ -20,8 +20,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
+- [x] Description of key features
+- [x] Description of how you will use each technology
 - [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
@@ -32,31 +32,51 @@ Ever been part of a friend group, work team, animation cohort, or community grou
 
 ![Design image](placeholder.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. -->
 
 ```mermaid
 sequenceDiagram
     actor You
-    actor Website
-    You->>Website: Replace this with your design
+    participant Server
+    actor Friend
+
+    entryspacing 0.9
+
+    You -> Server: Add event (Get Together for Dinner)
+    Server --> Friend: Event added (Get Together for Dinner)
+    Friend -> Server: React to new event (thumbs up)
+    Server --> You: Reaction to event (thumbs up)
+    Friend -> Server: Give suggestion ("Costa Vida?")
+    Server --> You: Suggestion posted ("Costa Vida?")
+    You -> Server: Update event (Get Together at Costa Vida)
+    Server --> Friend: Event updated (Get Together at Costa Vida)
 ```
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- User authentication over HTTPS
+- Private group calendars and schedules
+- Interactive calendar
+- Active updates to events
+- Custom events
+- Ability to react to events
+- Post suggestions to specific events
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Correct structure for three pages, including: login/register, calendar management, and the selected calendar itself
+- **CSS** - Well structured calendar interface, effective menus that are well styled and colored
+- **React** - Login and registration fields, calendar selection menu, and event creation, reaction, and suggesting
+- **Service** - Backend endpoints for:
+    - login
+    - registration
+    - calendar retrieval
+    - calendar event info retrieval
+    - update calendar/event(s) (add, update, delete, suggest, react, etc.)
+- **DB/Login** - Store securely user info, permissions, and calendar access. Store calendar/event info. Authenticate access before retrieval and modification
+- **WebSocket** - Reactions, suggestions, and new/updated events broadcasted to all associated users in the group as they happen
 
 ## 🚀 AWS deliverable
 
