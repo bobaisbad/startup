@@ -36,20 +36,17 @@ Ever been part of a friend group, work team, animation cohort, or community grou
 
 ```mermaid
 sequenceDiagram
-    actor You
-    participant Server
-    actor Friend
-
-    entryspacing 0.9
-
-    You ->> Server: Add event (Get Together for Dinner)
-    Server -->> Friend: Event added (Get Together for Dinner)
-    Friend ->> Server: React to new event (thumbs up)
-    Server -->> You: Reaction to event (thumbs up)
-    Friend ->> Server: Give suggestion ("Costa Vida?")
-    Server -->> You: Suggestion posted ("Costa Vida?")
-    You ->> Server: Update event (Get Together at Costa Vida)
-    Server -->> Friend: Event updated (Get Together at Costa Vida)
+    actor You 
+    participant Server 
+    actor Friend 
+    You->>Server: Add event (Get Together for Dinner) 
+    Server-->>Friend: Event added (Get Together for Dinner) 
+    Friend->>Server: React to new event (thumbs up) 
+    Server-->>You: Reaction to event (thumbs up) 
+    Friend->>Server: Give suggestion ("Costa Vida?") 
+    Server-->>You: Suggestion posted ("Costa Vida?") 
+    You->>Server: Update event (Get Together at Costa Vida) 
+    Server-->>Friend: Event updated (Get Together at Costa Vida) 
 ```
 
 ### Key features
