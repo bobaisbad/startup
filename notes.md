@@ -10,7 +10,9 @@
 
 ## AWS
 
-My IP address is: 
+My IP address is: 98.88.56.43
+
+Command to shell into my server: ssh -i [keyFileName] ubuntu@98.88.56.43
 
 ## Caddy
 
