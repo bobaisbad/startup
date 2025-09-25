@@ -79,21 +79,21 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [X] **Server deployed and accessible with custom domain name** - [My server link](https://getwithfriends.click).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [X] **HTML pages** - Made the index page into the login; added about, registration, and calendar pages
+- [X] **Proper HTML element usage** - Created tables, links, buttons, fields, etc. for future actual use in as neat a way as possible with HTML
+- [X] **Links** - Links from each page to some other page, usually in a sensible order
+- [X] **Text** - Some descriptions, titles, headers, paragraphs, etc.
+- [X] **3rd party API placeholder** - Holiday place holder that will use data pulled from a 3rd party API
+- [X] **Images** - One image placeholder currently in the about page
+- [X] **Login placeholder** - The index page currently has login and a link to registration
+- [X] **DB data placeholder** - Events put into the calendars at a future date will be stored with its respective calendar
+- [X] **WebSocket placeholder** - Reactions to events will happen in real time through WebSocket
 
 ## 🚀 CSS deliverable
 

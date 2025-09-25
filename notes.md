@@ -16,13 +16,15 @@ My domain name is: getwithfriends.click
 
 Command to shell into my server: ssh -i [keyFileName] ubuntu@98.88.56.43/getwithfriends.click
 
+Command to push to production: ./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s <whatyourpushing>
+
 ## Caddy
 
 ??? [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
 
 ## HTML
 
-???
+It was actually quite interesting and fun trying to figure out eaxctly how I wanted to set everything up in HTML. The Simon example gave me quite a few examples of how to structure things, and it was quite helpful in making the base structure. I am likely missing one or two things that I haven't thought of yet, but most are there currently.
 
 ## CSS
 
