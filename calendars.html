@@ -9,45 +9,70 @@
         <link rel="stylesheet" href="main.css" />
         <link rel="stylesheet" href="calendars.css" />
 
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+            crossorigin="anonymous"
+        />
+
     </head>
-    <body>
-        <header>
-            <h1>Get With Friends</h1>
+    <body class="bg-dark text-light">
+        <header class="container-fluid">
+            <!-- <h1>Get With Friends</h1> -->
 
-            <table border="1" cellpadding="5" cellspacing="0">
-                <tr>
-                    <th>User's Calendars:</th>
-                    <td><a href="">Animation</a></td>
-                    <td><a href="">CS 260</a></td>
-                    <td><a href="">LISRites</a></td>
-                </tr>
-            </table>
-
-            <form method="get" action="index.html">
-                <button type="submit">Logout</button>
-            </form>
-            <form method="get" action="create.html">
-                <button type="submit">Create an Event</button>
-            </form>
-            <form method="get" action="">
-                <button type="submit">< Prev</button>
-            </form>
-            <form method="get" action="">
-                <button type="submit">Next ></button>
-            </form>
-
-            <nav>
-                <menu>
+            <nav class="navbar fixed-top navbar-dark">
+            <!-- <nav class="navbar fixed-top"> -->
+                <span class="navbar-brand">Get With Friends</span>
+                <menu class="navbar-nav">
                     <!-- <li><a href="index.html">Home</a></li>
-                    <li><a href="calendars.html">Calendars</a></li>
-                    <li><a href="index.html">Login</a></li>  -->
+                    <li><a href="calendars.html">Calendars</a></li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Logout</a>
+                    </li> 
+                    <!-- <div class="container-fluid"> -->
+                        <!-- <span class="text-reset">Alec Winn</span> -->
+                        <!-- <br /> -->
+                        <!-- <a class="text-reset" href="index.html">Logout</a> -->
+                    <!-- </div> -->
                 </menu>
             </nav>
-
-            <hr />
         </header>
 
-        <main>
+        <table class="table_nav" border="1" cellpadding="5" cellspacing="0">
+            <tr>
+                <th>User's Calendars:</th>
+                <td><a href="">Animation</a></td>
+                <td><a href="">CS 260</a></td>
+                <td><a href="">LISRites</a></td>
+            </tr>
+        </table>
+
+        <form method="get" action="index.html">
+            <button type="submit" class="btn btn-secondary">Logout</button>
+        </form>
+        <form method="get" action="create.html">
+            <button type="submit" class="btn btn-secondary">Create an Event</button>
+        </form>
+        <form method="get" action="">
+            <button type="submit" class="btn btn-secondary">< Prev</button>
+        </form>
+        <form method="get" action="">
+            <button type="submit" class="btn btn-secondary">Next ></button>
+        </form>
+
+            <!-- <nav>
+                <menu>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calendars.html">Calendars</a></li>
+                    <li><a href="index.html">Login</a></li>
+                </menu>
+            </nav> -->
+
+            <!-- <hr /> -->
+        <!-- </header> -->
+
+        <main class="container-fluid bg-secondary text-center">
             <h3>Animation</h3>
 
             <table border="1" width="100%" cellpadding="10" cellspacing="0">
