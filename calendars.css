@@ -1,3 +1,27 @@
-menu a {
+/* menu a {
   float: right;
+} */
+
+main {
+  flex-direction: column;
+}
+
+menu .nav-item-center {
+  /* padding: 0 0.3em;
+  align-items: center;
+  float: right;
+  justify-content: start; */
+}
+
+footer .nav-link {
+  /* align-items: center;
+  float: center; */
+}
+
+table {
+  /* border: 1px solid black; */
+}
+
+td, th, tr {
+  border: 1px solid black !important;
 }
