@@ -39,7 +39,7 @@
                     <!-- <li><a href="index.html">Home</a></li>
                     <li><a href="calendars.html">Calendars</a></li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Back to Calendar</a>
+                        <a class="nav-link" href="calendars.html">Back to Calendar</a>
                     </li> 
                 </menu>
             </nav>
@@ -48,51 +48,58 @@
         </header>
 
         <main class="container-fluid bg-secondary text-center">
-            <h3>Event Name</h3>
+            <div>
+                <h3>Event Name</h3>
 
-            <p>
-                Event Date and Time: ??/??/???? ??:?? ?M
-            </p>
+                <p>
+                    Event Date and Time: ??/??/???? ??:?? ?M
+                </p>
 
-            <p>
-                Event Details: blah blah blah
-            </p>
+                <p>
+                    Event Details: blah blah blah
+                </p>
 
-            <p>
-                Event Poster: Bob
-            </p>
+                <p>
+                    Event Poster: Bob
+                </p>
 
-            <p>
-                RSVPs: 2
-            </p>
+                <p>
+                    RSVPs: 2
+                </p>
 
-            <!-- <h2>Creator:</h2> -->
-            <!-- <div id="picture" class="picture-box"><img width="400px" src="morning_byu.jpg" alt="random" /></div> -->
+                <!-- <h2>Creator:</h2> -->
+                <!-- <div id="picture" class="picture-box"><img width="400px" src="morning_byu.jpg" alt="random" /></div> -->
 
-            <form method="get" action="">
-                <div>
-                    <span>Post Your Thoughts: </span>
-                    <textarea id="textarea" name="varTextarea"></textarea>
-                </div>
-                <button type="submit">Post</button>
-                <!-- <button type="submit">Register</button> -->
-            </form>
+                <form method="get" action="">
+                    <div class="input-group mb-3">
+                        <span>
+                            Post Your Thoughts: 
+                        </span>
+                        <textarea class="form-control" id="textarea" name="varTextarea"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                    <!-- <button type="submit">Register</button> -->
+                </form>
+            </div>
 
-            <p>
-                What others have said: 
-            </p>
+            <div class="div-left">
+                <p>
+                    What others have said: 
+                </p>
 
-            <p>
-                Gabriel: Awesome, lets do it!
-            </p>
+                <p>
+                    Gabriel: Awesome, lets do it!
+                </p>
+            </div>
 
         </main>
 
-        <footer>
-            <hr />
-            <span class="text-reset">Alec Winn</span>
-            <br />
-            <a href="https://github.com/bobaisbad/startup.git">GitHub</a>
+        <footer class="bg-dark text-white-50">
+            <div class="container-fluid">
+                <span class="text-reset">Alec Winn</span>
+                <!-- <br /> -->
+                <a class="text-reset" href="https://github.com/bobaisbad/startup.git">GitHub</a>
+            </div>
         </footer>
     </body>
 </html>
