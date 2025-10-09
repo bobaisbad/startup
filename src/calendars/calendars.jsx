@@ -8,8 +8,8 @@ export function Calendars() {
       <hr />
             <h1>Animation</h1>
             <form method="get" action="">
-                <button type="submit" className="btn btn-primary" to="">Prev</button>
-                <button type="submit" className="btn btn-primary" to="">Next</button>
+                <button type="submit" className="btn btn-primary" to="calendars">Prev</button>
+                <button type="submit" className="btn btn-primary" to="calendars">Next</button>
             </form>
             <hr />
 
@@ -290,8 +290,8 @@ export function Calendars() {
             <hr />
 
             <form method="get" action="">
-                <button type="submit" className="btn btn-primary" to="">Prev</button>
-                <button type="submit" className="btn btn-primary" to="">Next</button>
+                <button type="submit" className="btn btn-primary" to="calendars">Prev</button>
+                <button type="submit" className="btn btn-primary" to="calendars">Next</button>
             </form>
 
             <hr />

@@ -5,7 +5,7 @@ export function Register() {
   return (
     <main className="container-fluid bg-secondary text-center">
       <h1>Registration</h1>
-        <form method="get" action="calendars.html">
+        <form method="get" action="calendars">
             <div className="input-group mb-3">
                 <span className="input-group-text">@</span>
                 <input className="form-control" type="text" placeholder="your@email.com" />

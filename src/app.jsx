@@ -49,7 +49,7 @@ export default function App() {
                 <span className="navbar-brand">Get With Friends</span>
                 <menu className="navbar-nav">
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="login">Login</NavLink>
+                    <NavLink className="nav-link" to="">Login</NavLink>
                   </li> 
                   <li className="nav-item">
                     <NavLink className="nav-link" to="calendars">Calendars</NavLink>
