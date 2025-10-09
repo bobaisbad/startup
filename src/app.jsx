@@ -44,33 +44,41 @@ export default function App() {
           </nav>
         </header> */}
 
-          <header className="container-fluid">
-              <nav className="navbar fixed-top navbar-dark">
-                  <span className="navbar-brand">Get With Friends</span>
-                  <menu className="navbar-nav">
-                    <li className="nav-item">
-                          <NavLink className="nav-link" to="login">Login</NavLink>
-                      </li> 
-                      <li className="nav-item">
-                          <NavLink className="nav-link" to="calendars">Calendars</NavLink>
-                      </li> 
-                      <li className="nav-item">
-                          <NavLink className="nav-link" to="create">Create</NavLink>
-                      </li> 
-                      <li className="nav-item">
-                          <NavLink className="nav-link" to="info">Info</NavLink>
-                      </li> 
-                      <li className="nav-item">
-                          <NavLink className="nav-link" to="register">Register</NavLink>
-                      </li> 
-                      <li className="nav-item">
-                          <NavLink className="nav-link" to="about">About</NavLink>
-                      </li> 
-                  </menu>
-              </nav>
-          </header>
+        <header className="container-fluid">
+            <nav className="navbar fixed-top navbar-dark">
+                <span className="navbar-brand">Get With Friends</span>
+                <menu className="navbar-nav">
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="login">Login</NavLink>
+                  </li> 
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="calendars">Calendars</NavLink>
+                  </li> 
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="create">Create</NavLink>
+                  </li> 
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="info">Info</NavLink>
+                  </li> 
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="register">Register</NavLink>
+                  </li> 
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="about">About</NavLink>
+                  </li> 
+                </menu>
+            </nav>
+        </header>
 
-        <main>App components go here</main>
+        <Routes>
+          <Route path='/' element={<Login />} exact />
+          <Route path='/calendars' element={<Calendars />} />
+          <Route path='/create' element={<Create />} />
+          <Route path='/info' element={<Info />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/about' element={<About />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
 
         <footer className="bg-dark text-white-50">
           <div className="container-fluid">
@@ -81,4 +89,8 @@ export default function App() {
       </div>
     </BrowserRouter>
   );
+}
+
+function NotFound() {
+  return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;
 }
