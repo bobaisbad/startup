@@ -84,7 +84,16 @@ export default function App() {
           <Route path='/calendars' element={<Calendars />} />
           <Route path='/create' element={<Create />} />
           <Route path='/info' element={<Info />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/register' element={<Register userName={userName} // authState={authState}
+                                                      // onAuthChange={(userName, authState) => {
+                                                      //               setAuthState(authState);
+                                                      //               setUserName(userName);
+                                                      //               }}/>
+                                                      onRegister={(registerUserName) => {
+                                                                  setAuthState(true);
+                                                                  setUserName(registerUserName);
+                                                                  }}/>
+                                          } />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
