@@ -22,7 +22,7 @@ export function Create() {
                     <span className="input-group-text">Event Calendar: </span>
                     <select className="form-control" id="select" name="varSelect">
                         <option>Animation</option>
-                        <option selected>CS260</option>
+                        <option>CS260</option>
                         <option>LISRites</option>
                     </select>
                 </div>
