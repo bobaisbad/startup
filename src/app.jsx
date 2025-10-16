@@ -11,6 +11,10 @@ import { Info } from './info/info';
 import { Register } from './register/register';
 
 export default function App() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? true : false;
+  const [authState, setAuthState] = React.useState(currentAuthState);
+
   return (
     <BrowserRouter>
       <div className="body bg-dark text-light">
@@ -71,7 +75,12 @@ export default function App() {
         </header>
 
         <Routes>
-          <Route path='/' element={<Login />} exact />
+          <Route path='/' element={<Login userName={userName} authState={authState}
+                                          onAuthChange={(userName, authState) => {
+                                                        setAuthState(authState);
+                                                        setUserName(userName);
+                                                        }}/>
+                                  } exact />
           <Route path='/calendars' element={<Calendars />} />
           <Route path='/create' element={<Create />} />
           <Route path='/info' element={<Info />} />

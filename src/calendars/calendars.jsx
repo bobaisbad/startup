@@ -38,7 +38,7 @@ export function Calendars() {
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td><NavLink to="info">Holiday - All Day</NavLink></td>
+                    <td><NavLink to="../info">Holiday - All Day</NavLink></td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -170,7 +170,7 @@ export function Calendars() {
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td><NavLink to="info">Animation Meeting (Sophie reacted with ":)"</NavLink></td>
+                    <td><NavLink to="../info">Animation Meeting (Sophie reacted with ":)"</NavLink></td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
