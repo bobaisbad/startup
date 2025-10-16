@@ -1,5 +1,8 @@
 import React from 'react';
+
 import { useNavigate } from 'react-router-dom';
+
+import Button from 'react-bootstrap/Button';
 
 export function LoggedIn(props) {
   const navigate = useNavigate();
@@ -21,8 +24,8 @@ export function LoggedIn(props) {
                 <input className="form-control" type="password" onChange={(e) => setPassword(e.target.value)} placeholder="password" />
             </div> */}
             <div className='nameOfUser'>{props.userName}</div>
-            <button type="submit" className="btn btn-primary" onClick={() => navigate('/calendars')}>Calendars</button>
-            <button type="submit" className="btn btn-secondary" onClick={() => logoutUser()}>Logout</button>
+            <Button variant='primary' onClick={() => navigate('/calendars')}>Calendars</Button>
+            <Button variant='secondary' onClick={() => logoutUser()}>Logout</Button>
         {/* </form> */}
       </div>
 

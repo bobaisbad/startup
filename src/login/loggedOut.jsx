@@ -1,8 +1,14 @@
 import React from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
+import Button from 'react-bootstrap/Button';
+
 export function LoggedOut(props) {
   const [userName, setUserName] = React.useState(props.userName);
   const [password, setPassword] = React.useState('');
+  const navigate = useNavigate();
+  
 //   const [displayError, setDisplayError] = React.useState(null);
 
   async function loginUser() {
@@ -42,8 +48,8 @@ export function LoggedOut(props) {
                 <span className="input-group-text">🔒</span>
                 <input className="form-control" type="password" onChange={(e) => setPassword(e.target.value)} placeholder="password" />
             </div>
-            <button type="submit" className="btn btn-primary" onClick={() => loginUser()} disbaled={!userName || !password}>Login</button>
-            <button type="submit" className="btn btn-secondary" to="register">Register</button>
+            <Button variant='primary' onClick={() => loginUser()} disabled={!userName || !password}>Login</Button>
+            <Button variant='secondary' onClick={() => navigate('/register')}>Register</Button>
         {/* </form> */}
       </div>
 
