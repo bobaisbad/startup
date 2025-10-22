@@ -54,19 +54,27 @@ export default function App() {
                 <menu className="navbar-nav">
                   <li className="nav-item">
                     <NavLink className="nav-link" to="">Login</NavLink>
-                  </li> 
+                  </li>
+                  {authState === true && (
                   <li className="nav-item">
                     <NavLink className="nav-link" to="calendars">Calendars</NavLink>
-                  </li> 
+                  </li>
+                  )}
+                  {/* {authState === true && (
                   <li className="nav-item">
                     <NavLink className="nav-link" to="create">Create</NavLink>
-                  </li> 
+                  </li>
+                  )}
+                  {authState === true && (
                   <li className="nav-item">
                     <NavLink className="nav-link" to="info">Info</NavLink>
-                  </li> 
+                  </li>
+                  )}
+                  {authState === true && (
                   <li className="nav-item">
                     <NavLink className="nav-link" to="register">Register</NavLink>
                   </li> 
+                  )} */}
                   <li className="nav-item">
                     <NavLink className="nav-link" to="about">About</NavLink>
                   </li> 
