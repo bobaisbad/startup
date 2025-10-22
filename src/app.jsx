@@ -15,6 +15,8 @@ export default function App() {
   const currentAuthState = userName ? true : false;
   const [authState, setAuthState] = React.useState(currentAuthState);
 
+  localStorage.setItem('eventID', 0);
+
   return (
     <BrowserRouter>
       <div className="body bg-dark text-light">
