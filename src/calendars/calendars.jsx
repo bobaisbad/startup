@@ -6,6 +6,232 @@ import { NavLink } from 'react-router-dom';
 export function Calendars() {
     const [events, setEvents] = React.useState([]);
 
+    events.push({ time: 'All Day',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '1', name: 'Holiday - Thanksgiving' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+
+    events.push({ time: '12:00 AM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '1:00 AM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '2:00 AM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+
+    events.push({ time: '3:00 AM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+
+    events.push({ time: '4:00 AM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '5:00 AM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '6:00 AM',
+                    monday: { id: '2', name: 'Running' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+
+    events.push({ time: '7:00 AM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    events.push({ time: '8:00 AM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '9:00 AM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '10:00 AM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+
+    events.push({ time: '11:00 AM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '12:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '1:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '2:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+
+    events.push({ time: '3:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+
+    events.push({ time: '4:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '5:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '6:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+
+    events.push({ time: '7:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+
+    events.push({ time: '8:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '9:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+    
+    events.push({ time: '10:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+
+    events.push({ time: '11:00 PM',
+                    monday: { id: '', name: '' },
+                    tuesday: { id: '', name: '' },
+                    wednesday: { id: '', name: '' },
+                    thursday: { id: '', name: '' },
+                    friday: { id: '', name: '' },
+                    saturday: { id: '', name: '' },
+                    sunday: { id: '', name: '' } })
+
+    localStorage.setItem('events', JSON.stringify(events));
+
     React.useEffect(() => {
         const eventsText = localStorage.getItem('events');
         if (eventsText) {
@@ -21,13 +247,13 @@ export function Calendars() {
                 <tr key={i}>
                     {/* <NavLink to="../info">Holiday - All Day</NavLink> */}
                     <td>{event.time}</td>
-                    <td><NavLink to={'info/' + event.monday.id}>{event.monday}</NavLink></td>
-                    <td><NavLink to={'info/' + event.tuesday.id}>{event.tuesday}</NavLink></td>
-                    <td><NavLink to={'info/' + event.wednesday.id}>{event.wednesday}</NavLink></td>
-                    <td><NavLink to={'info/' + event.thursday.id}>{event.thursday}</NavLink></td>
-                    <td><NavLink to={'info/' + event.friday.id}>{event.friday}</NavLink></td>
-                    <td><NavLink to={'info/' + event.saturday.id}>{event.saturday}</NavLink></td>
-                    <td><NavLink to={'info/' + event.sunday.id}>{event.sunday}</NavLink></td>
+                    <td><NavLink to={'../info/' + event.monday.id}>{event.monday.name}</NavLink></td>
+                    <td><NavLink to={'../info/' + event.tuesday.id}>{event.tuesday.name}</NavLink></td>
+                    <td><NavLink to={'../info/' + event.wednesday.id}>{event.wednesday.name}</NavLink></td>
+                    <td><NavLink to={'../info/' + event.thursday.id}>{event.thursday.name}</NavLink></td>
+                    <td><NavLink to={'../info/' + event.friday.id}>{event.friday.name}</NavLink></td>
+                    <td><NavLink to={'../info/' + event.saturday.id}>{event.saturday.name}</NavLink></td>
+                    <td><NavLink to={'../info/' + event.sunday.id}>{event.sunday.name}</NavLink></td>
                 </tr>
             );
         }
