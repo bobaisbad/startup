@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { Calendars } from '../calendars/calendars';
 
-export function Create() {
+export function Create({ poster }) {
     const navigate = useNavigate();
 
     let eventID = localStorage.getItem('eventID');
@@ -36,8 +36,11 @@ export function Create() {
     async function createEvent() {
         const eventsOBJ = localStorage.getItem('events');
         let events = JSON.parse(eventsOBJ);
+        console.log(events);
+        console.log(calendarTime);
         
         for (const [i, event] of events.entries()) {
+            console.log(event);
             if (event.time === calendarTime) {
                 switch (eventDay) {
                     case 'monday':
@@ -79,7 +82,10 @@ export function Create() {
                         date: eventDate,
                         time: eventTime,
                         details: eventDetails,
-                        calendar: eventCalendar };
+                        calendar: eventCalendar,
+                        poster: poster,
+                        rsvps: 0,
+                        comments: [] };
 
         console.log(finalJSON);
 
