@@ -92,7 +92,7 @@ export default function App() {
           <Route path='/calendars' element={<Calendars />} />
           <Route path='/create' element={<Create poster={userName} />} />
           {/* <Route path='/info' element={<Info />} /> */}
-          <Route path='/:id' element={<Info />} />
+          <Route path='/:id' element={<Info name={userName} />} />
           <Route path='/register' element={<Register userName={userName} // authState={authState}
                                                       // onAuthChange={(userName, authState) => {
                                                       //               setAuthState(authState);

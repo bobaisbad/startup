@@ -6,8 +6,28 @@ import { useParams, Navigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
 
-export function Info() {
+export function Info({ name }) {
+    const [comments, setComments] = React.useState([]);
     const { id } = useParams();
+
+    React.useEffect(() => {
+            // console.log("Is it here?");
+            const eventOBJ = localStorage.getItem(id);
+
+            if (!eventOBJ) {
+                return <Navigate to="../not-found" />;
+            }
+
+            const event = JSON.parse(eventOBJ);
+
+            // const commentsText = localStorage.getItem('events');
+            if (event) {
+                setComments(event.comments);
+            }
+            // console.log("Or is it here?");
+    }, []);
+    
+    let text = '';
 
     if (!/^\d+$/.test(id)) {
         return <Navigate to="../not-found" />;
@@ -72,24 +92,24 @@ export function Info() {
                     Event Poster: {event.poster}
                 </p>
 
-                <p>
+                {/* <p>
                     RSVPs: {event.rsvps}
-                </p>
+                </p> */}
 
                 <form method="get" action="">
                     <div className="input-group mb-3">
                         <span>
                             Post Your Thoughts:&nbsp;&nbsp;
                         </span>
-                        <textarea className="form-control" id="textarea" name="varTextarea"></textarea>
+                        <textarea className="form-control" id="textarea" onChange={(e) => text = e.target.value} name="varTextarea"></textarea>
                     </div>
-                    <Button variant="primary" onClick={}>Post</Button>
-                    <Button variant="primary" onClick={}>RSVP</Button>
+                    <Button variant="primary" onClick={() => {event.comments.push({ name: name, text: text}); console.log(event.comments);}}>Post</Button>
+                    {/* <Button variant="primary" onClick={() => event.rsvps += 1}>RSVP</Button> */}
                 </form>
             </div>
 
             <div className="div-left">
-                <RenderComments comments={event.comments} />
+                <RenderComments event={event} />
                 {/* <p>
                     Gabriel (1d): Awesome, lets do it!
                 </p>
@@ -127,13 +147,17 @@ export function Info() {
   );
 }
 
-export function RenderComments({ comments }) {
+export function RenderComments({ event }) {
+    const comments = event.comments;
+    console.log(comments);
     const commentRows = [];
     if (comments.length) {
         for (const [i, comment] of comments.entries()) {
             commentRows.push(
-                <p>comment.name</p>
+                <p>{comment.name}: {comment.text}</p>
             );
         }
     }
+
+    return commentRows;
 }
