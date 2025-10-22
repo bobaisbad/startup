@@ -20,7 +20,7 @@ export default function App() {
   let events = [];
   events.push({ time: 'All Day',
                     monday: { id: '', name: '' },
-                    tuesday: { id: '1.', name: 'Holiday - Thanksgiving\n' },
+                    tuesday: { id: '1', name: 'Holiday - Thanksgiving' },
                     wednesday: { id: '', name: '' },
                     thursday: { id: '', name: '' },
                     friday: { id: '', name: '' },
@@ -82,7 +82,7 @@ export default function App() {
                     sunday: { id: '', name: '' } });
     
     events.push({ time: '6:00 AM',
-                    monday: { id: '2.', name: 'Running\n' },
+                    monday: { id: '2', name: 'Running' },
                     tuesday: { id: '', name: '' },
                     wednesday: { id: '', name: '' },
                     thursday: { id: '', name: '' },
@@ -245,6 +245,9 @@ export default function App() {
     // console.log(events);
     localStorage.setItem('events', JSON.stringify(events));
 
+  const infoPath = '/' + /[0-9]*/;
+  console.log(infoPath);
+
   return (
     <BrowserRouter>
       <div className="body bg-dark text-light">
@@ -321,7 +324,8 @@ export default function App() {
                                   } exact />
           <Route path='/calendars' element={<Calendars />} />
           <Route path='/create' element={<Create />} />
-          <Route path='/info' element={<Info />} />
+          {/* <Route path='/info' element={<Info />} /> */}
+          <Route path='/:id' element={<Info />} />
           <Route path='/register' element={<Register userName={userName} // authState={authState}
                                                       // onAuthChange={(userName, authState) => {
                                                       //               setAuthState(authState);
@@ -333,7 +337,7 @@ export default function App() {
                                                                   }}/>
                                           } />
           <Route path='/about' element={<About />} />
-          <Route path='*' element={<NotFound />} />
+          <Route path='/not-found' element={<NotFound />} />
         </Routes>
 
         <footer className="bg-dark text-white-50">

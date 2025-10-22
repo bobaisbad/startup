@@ -114,7 +114,7 @@ export function Create() {
                         <option>LISRites</option>
                     </select>
                 </div>
-                <Button variant='primary' onClick={() => createEvent()}>Create</Button>
+                <Button variant='primary' onClick={() => {createEvent(); navigate('/calendars')}}>Create</Button>
             </div>
             {/* </form> */}
         </main>

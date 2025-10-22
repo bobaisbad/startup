@@ -261,13 +261,20 @@ export function Calendars() {
                 <tr key={i}>
                     {/* <NavLink to="../info">Holiday - All Day</NavLink> */}
                     <td>{event.time}</td>
-                    <td><NavLink to={'../info/' + event.monday.id}>{event.monday.name}</NavLink></td>
+                    {/* <td><NavLink to={'../info/' + event.monday.id}>{event.monday.name}</NavLink></td>
                     <td><NavLink to={'../info/' + event.tuesday.id}>{event.tuesday.name}</NavLink></td>
                     <td><NavLink to={'../info/' + event.wednesday.id}>{event.wednesday.name}</NavLink></td>
                     <td><NavLink to={'../info/' + event.thursday.id}>{event.thursday.name}</NavLink></td>
                     <td><NavLink to={'../info/' + event.friday.id}>{event.friday.name}</NavLink></td>
                     <td><NavLink to={'../info/' + event.saturday.id}>{event.saturday.name}</NavLink></td>
-                    <td><NavLink to={'../info/' + event.sunday.id}>{event.sunday.name}</NavLink></td>
+                    <td><NavLink to={'../info/' + event.sunday.id}>{event.sunday.name}</NavLink></td> */}
+                    <td><NavLink to={'../' + event.monday.id}>{event.monday.name}</NavLink></td>
+                    <td><NavLink to={'../' + event.tuesday.id}>{event.tuesday.name}</NavLink></td>
+                    <td><NavLink to={'../' + event.wednesday.id}>{event.wednesday.name}</NavLink></td>
+                    <td><NavLink to={'../' + event.thursday.id}>{event.thursday.name}</NavLink></td>
+                    <td><NavLink to={'../' + event.friday.id}>{event.friday.name}</NavLink></td>
+                    <td><NavLink to={'../' + event.saturday.id}>{event.saturday.name}</NavLink></td>
+                    <td><NavLink to={'../' + event.sunday.id}>{event.sunday.name}</NavLink></td>
                 </tr>
             );
         }
