@@ -17,13 +17,19 @@ export function Calendars() {
             console.log("Populating...")
             populate();
         }
+
+        const eventIDText = localStorage.getItem('eventID');
         // console.log("Or is it here?");
+        if (!eventIDText) {
+            localStorage.setItem('eventID', 0);
+        }
     }, []);
 
     const populate = () => {
         events.push({ time: 'All Day',
                         monday: { id: '', name: '' },
-                        tuesday: { id: '1.', name: 'Holiday - Thanksgiving\n' },
+                        // tuesday: { id: '1', name: 'Holiday - Thanksgiving' },
+                        tuesday: { id: '', name: '' },
                         wednesday: { id: '', name: '' },
                         thursday: { id: '', name: '' },
                         friday: { id: '', name: '' },
@@ -85,7 +91,8 @@ export function Calendars() {
                         sunday: { id: '', name: '' } })
         
         events.push({ time: '06:00 AM',
-                        monday: { id: '2.', name: 'Running\n' },
+                        // monday: { id: '2', name: 'Running' },
+                        monday: { id: '', name: '' },
                         tuesday: { id: '', name: '' },
                         wednesday: { id: '', name: '' },
                         thursday: { id: '', name: '' },

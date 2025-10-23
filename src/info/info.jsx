@@ -7,25 +7,25 @@ import Button from 'react-bootstrap/Button';
 
 
 export function Info({ name }) {
-    const [comments, setComments] = React.useState([]);
+    // const [comments, setComments] = React.useState([]);
     const { id } = useParams();
 
-    React.useEffect(() => {
-            // console.log("Is it here?");
-            const eventOBJ = localStorage.getItem(id);
+    // React.useEffect(() => {
+    //         // console.log("Is it here?");
+    //         const eventOBJ = localStorage.getItem(id);
 
-            if (!eventOBJ) {
-                return <Navigate to="../not-found" />;
-            }
+    //         if (!eventOBJ) {
+    //             return <Navigate to="../not-found" />;
+    //         }
 
-            const event = JSON.parse(eventOBJ);
+    //         const event = JSON.parse(eventOBJ);
 
-            // const commentsText = localStorage.getItem('events');
-            if (event) {
-                setComments(event.comments);
-            }
-            // console.log("Or is it here?");
-    }, []);
+    //         // const commentsText = localStorage.getItem('events');
+    //         // if (event) {
+    //         //     setComments(event.comments);
+    //         // }
+    //         // console.log("Or is it here?");
+    // }, []);
     
     let text = '';
 
@@ -103,13 +103,15 @@ export function Info({ name }) {
                         </span>
                         <textarea className="form-control" id="textarea" onChange={(e) => text = e.target.value} name="varTextarea"></textarea>
                     </div>
-                    <Button variant="primary" onClick={() => {event.comments.push({ name: name, text: text}); console.log(event.comments);}}>Post</Button>
+                    {/* <Button variant="primary" onClick={() => {event.comments.push({ name: name, text: text}); console.log(event.comments);}}>Post</Button> */}
+                    <Button variant="primary" onClick={() => {}}>Post</Button>
                     {/* <Button variant="primary" onClick={() => event.rsvps += 1}>RSVP</Button> */}
                 </form>
             </div>
 
             <div className="div-left">
-                <RenderComments event={event} />
+                {/* <RenderComments event={event} /> */}
+                {/* <div>{comments}</div> */}
                 {/* <p>
                     Gabriel (1d): Awesome, lets do it!
                 </p>
