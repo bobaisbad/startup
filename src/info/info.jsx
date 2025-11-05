@@ -5,6 +5,8 @@ import { useParams, Navigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 
+
+
 async function getEvent(id) {
     let details = [];
     let event;
@@ -16,6 +18,8 @@ async function getEvent(id) {
             // console.log(details);
             console.log(details);
     });
+
+    console.log("Got here first");
 
     for (const [key, value] of Object.entries(details)) {
         if (key === id) {
@@ -31,8 +35,78 @@ async function getEvent(id) {
 }
 
 export function Info({ name }) {
-    // const [comments, setComments] = React.useState([]);
+    const [event, setEvent] = React.useState([]);
+    // const [week, setWeek] = React.useState([]);
     const { id } = useParams();
+
+    React.useEffect(() => {
+        // const { id } = useParams();
+
+        // let text = '';
+
+        // console.log(id)
+
+        let details = [];
+        fetch('/api/details')
+            // method: 'POST',
+            .then((response) => response.json())
+            .then((given) => {
+                details = given;
+                // console.log(details);
+                // console.log(details);
+                for (const [key, value] of Object.entries(details)) {
+                    if (key === id) {
+                        setEvent(value);
+                    }
+                }
+
+                if (!event) {
+                    return <Navigate to="../not-found" />;
+                }
+        });
+
+        // console.log("Got here first");
+
+        // let event;
+        // for (const [key, value] of Object.entries(details)) {
+        //     if (key === id) {
+        //         setEvent(value);
+        //     }
+        // }
+
+        // let event = getEvent(id);
+        // console.log("Got here second");
+
+        // if (!event) {
+        //     return <Navigate to="../not-found" />;
+        // }
+    });
+
+    return (
+        <main className="container-fluid bg-secondary text-center">
+            <div>
+                <h1>{event.name}</h1>
+            </div>
+            <div>
+                <p>
+                    Event Date and Time: {event.date} {event.time}
+                </p>
+
+                <p>
+                    Event Details: {event.details}
+                </p>
+
+                <p>
+                    Event Poster: {event.poster}
+                </p>
+            </div>
+        </main>
+    );
+
+
+    // loadInfo(setEvent);
+    // const [comments, setComments] = React.useState([]);
+    // const { id } = useParams();
 
     // React.useEffect(() => {
     //         // console.log("Is it here?");
@@ -51,16 +125,17 @@ export function Info({ name }) {
     //         // console.log("Or is it here?");
     // }, []);
     
-    let text = '';
+    // let text = '';
 
-    console.log(id)
+    // console.log(id)
 
     // if (!/^\d+$/.test(id)) {
     //     return <Navigate to="../not-found" />;
     // }
 
     // let details = [];
-    let event = getEvent(id);
+    // let event = getEvent(id);
+    // console.log("Got here second");
     // fetch('/api/details')
     //     // method: 'POST',
     //     .then((response) => response.json())
@@ -164,9 +239,9 @@ export function Info({ name }) {
     //     }
     // }
 
-    if (!event) {
-        return <Navigate to="../not-found" />;
-    }
+    // if (!event) {
+    //     return <Navigate to="../not-found" />;
+    // }
 
     // console.log(`Returned event:`);
     // console.log(event);
@@ -211,80 +286,80 @@ export function Info({ name }) {
     //     );
     // }
 
-    return (
-        <main className="container-fluid bg-secondary text-center">
-            <div>
-                <h1>{event.name}</h1>
-            </div>
-            <div>
-                <p>
-                    {/* Event Date and Time: ??/??/???? ??:?? ?M */}
-                    Event Date and Time: {event.date} {event.time}
-                </p>
+//     return (
+//         <main className="container-fluid bg-secondary text-center">
+//             <div>
+//                 <h1>{event.name}</h1>
+//             </div>
+//             <div>
+//                 <p>
+//                     {/* Event Date and Time: ??/??/???? ??:?? ?M */}
+//                     Event Date and Time: {event.date} {event.time}
+//                 </p>
 
-                <p>
-                    Event Details: {event.details}
-                </p>
+//                 <p>
+//                     Event Details: {event.details}
+//                 </p>
 
-                <p>
-                    Event Poster: {event.poster}
-                </p>
+//                 <p>
+//                     Event Poster: {event.poster}
+//                 </p>
 
-                {/* <p>
-                    RSVPs: {event.rsvps}
-                </p> */}
+//                 {/* <p>
+//                     RSVPs: {event.rsvps}
+//                 </p> */}
 
-                {/* <form method="get" action="">
-                    <div className="input-group mb-3">
-                        <span>
-                            Post Your Thoughts:&nbsp;&nbsp;
-                        </span>
-                        <textarea className="form-control" id="textarea" onChange={(e) => text = e.target.value} name="varTextarea"></textarea>
-                    </div> */}
-                    {/* <Button variant="primary" onClick={() => {event.comments.push({ name: name, text: text}); console.log(event.comments);}}>Post</Button> */}
-                    {/* <Button variant="primary" onClick={() => {}}>Post</Button> */}
-                    {/* <Button variant="primary" onClick={() => event.rsvps += 1}>RSVP</Button> */}
-                {/* </form> */}
-            </div>
+//                 {/* <form method="get" action="">
+//                     <div className="input-group mb-3">
+//                         <span>
+//                             Post Your Thoughts:&nbsp;&nbsp;
+//                         </span>
+//                         <textarea className="form-control" id="textarea" onChange={(e) => text = e.target.value} name="varTextarea"></textarea>
+//                     </div> */}
+//                     {/* <Button variant="primary" onClick={() => {event.comments.push({ name: name, text: text}); console.log(event.comments);}}>Post</Button> */}
+//                     {/* <Button variant="primary" onClick={() => {}}>Post</Button> */}
+//                     {/* <Button variant="primary" onClick={() => event.rsvps += 1}>RSVP</Button> */}
+//                 {/* </form> */}
+//             </div>
 
-            <div className="div-left">
-                {/* <RenderComments event={event} /> */}
-                {/* <div>{comments}</div> */}
-                {/* <p>
-                    Gabriel (1d): Awesome, lets do it!
-                </p>
+//             <div className="div-left">
+//                 {/* <RenderComments event={event} /> */}
+//                 {/* <div>{comments}</div> */}
+//                 {/* <p>
+//                     Gabriel (1d): Awesome, lets do it!
+//                 </p>
 
-                <p>
-                    Jakob (5h): It sounds fun, but idk if I can come
-                </p> */}
-            </div>
+//                 <p>
+//                     Jakob (5h): It sounds fun, but idk if I can come
+//                 </p> */}
+//             </div>
 
-            {/* <Routes> */}
-                {/* <Route path='/0' element={<Info />}></Route> */}
-            {/* <Route path='/' element={<Login userName={userName} authState={authState}
-                                            onAuthChange={(userName, authState) => {
-                                                            setAuthState(authState);
-                                                            setUserName(userName);
-                                                            }}/>
-                                    } exact />
-            <Route path='/calendars' element={<Calendars />} />
-            <Route path='/create' element={<Create />} />
-            <Route path='/info' element={<Info />} />
-            <Route path='/register' element={<Register userName={userName} // authState={authState}
-                                                        // onAuthChange={(userName, authState) => {
-                                                        //               setAuthState(authState);
-                                                        //               setUserName(userName);
-                                                        //               }}/>
-                                                        onRegister={(registerUserName) => {
-                                                                    setAuthState(true);
-                                                                    setUserName(registerUserName);
-                                                                    }}/>
-                                            } />
-            <Route path='/about' element={<About />} />
-            <Route path='*' element={<NotFound />} /> */}
-            {/* </Routes> */}
-        </main>
-  );
+//             {/* <Routes> */}
+//                 {/* <Route path='/0' element={<Info />}></Route> */}
+//             {/* <Route path='/' element={<Login userName={userName} authState={authState}
+//                                             onAuthChange={(userName, authState) => {
+//                                                             setAuthState(authState);
+//                                                             setUserName(userName);
+//                                                             }}/>
+//                                     } exact />
+//             <Route path='/calendars' element={<Calendars />} />
+//             <Route path='/create' element={<Create />} />
+//             <Route path='/info' element={<Info />} />
+//             <Route path='/register' element={<Register userName={userName} // authState={authState}
+//                                                         // onAuthChange={(userName, authState) => {
+//                                                         //               setAuthState(authState);
+//                                                         //               setUserName(userName);
+//                                                         //               }}/>
+//                                                         onRegister={(registerUserName) => {
+//                                                                     setAuthState(true);
+//                                                                     setUserName(registerUserName);
+//                                                                     }}/>
+//                                             } />
+//             <Route path='/about' element={<About />} />
+//             <Route path='*' element={<NotFound />} /> */}
+//             {/* </Routes> */}
+//         </main>
+//   );
 }
 
 // export function RenderComments({ event }) {
@@ -301,3 +376,58 @@ export function Info({ name }) {
 
 //     return commentRows;
 // }
+
+async function loadInfo(setEvent) {
+    const { id } = useParams();
+
+    let text = '';
+
+    console.log(id)
+
+    let details = [];
+    await fetch('/api/details')
+        // method: 'POST',
+        .then((response) => response.json())
+        .then((given) => {
+            details = given;
+            // console.log(details);
+            console.log(details);
+    });
+
+    console.log("Got here first");
+
+    // let event;
+    for (const [key, value] of Object.entries(details)) {
+        if (key === id) {
+            setEvent(value);
+        }
+    }
+
+    // let event = getEvent(id);
+    console.log("Got here second");
+
+    if (!event) {
+        return <Navigate to="../not-found" />;
+    }
+
+    return (
+        <main className="container-fluid bg-secondary text-center">
+            <div>
+                <h1>{event.name}</h1>
+            </div>
+            <div>
+                <p>
+                    Event Date and Time: {event.date} {event.time}
+                </p>
+
+                <p>
+                    Event Details: {event.details}
+                </p>
+
+                <p>
+                    Event Poster: {event.poster}
+                </p>
+            </div>
+        </main>
+    );
+}
