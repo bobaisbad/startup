@@ -8,8 +8,19 @@ export function LoggedIn(props) {
   const navigate = useNavigate();
 
   async function logoutUser() {
-    localStorage.removeItem('userName');
-    props.onLogout();
+    // localStorage.removeItem('userName');
+    // props.onLogout();
+
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+        // Logout failed. Assuming offline
+      })
+      .finally(() => {
+        localStorage.removeItem('userName');
+        props.onLogout();
+      });
   }
 
   return (
