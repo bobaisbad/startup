@@ -9,7 +9,7 @@ export function Base({ events, setter }) {
     // let events = [];
     events.push({ time: 'All Day',
                 monday: { id: '', name: '' },
-                tuesday: { id: '1', name: 'Holiday - Thanksgiving' },
+                tuesday: { id: '', name: '' },
                 wednesday: { id: '', name: '' },
                 thursday: { id: '', name: '' },
                 friday: { id: '', name: '' },
@@ -71,7 +71,7 @@ export function Base({ events, setter }) {
                 sunday: { id: '', name: '' } });
     
     events.push({ time: '6:00 AM',
-                monday: { id: '2', name: 'Running' },
+                monday: { id: '', name: '' },
                 tuesday: { id: '', name: '' },
                 wednesday: { id: '', name: '' },
                 thursday: { id: '', name: '' },

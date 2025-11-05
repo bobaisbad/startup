@@ -96,17 +96,17 @@ export function Info({ name }) {
                     RSVPs: {event.rsvps}
                 </p> */}
 
-                <form method="get" action="">
+                {/* <form method="get" action="">
                     <div className="input-group mb-3">
                         <span>
                             Post Your Thoughts:&nbsp;&nbsp;
                         </span>
                         <textarea className="form-control" id="textarea" onChange={(e) => text = e.target.value} name="varTextarea"></textarea>
-                    </div>
+                    </div> */}
                     {/* <Button variant="primary" onClick={() => {event.comments.push({ name: name, text: text}); console.log(event.comments);}}>Post</Button> */}
-                    <Button variant="primary" onClick={() => {}}>Post</Button>
+                    {/* <Button variant="primary" onClick={() => {}}>Post</Button> */}
                     {/* <Button variant="primary" onClick={() => event.rsvps += 1}>RSVP</Button> */}
-                </form>
+                {/* </form> */}
             </div>
 
             <div className="div-left">
