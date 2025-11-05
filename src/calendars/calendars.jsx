@@ -15,11 +15,11 @@ export function Calendars() {
         let short = [1]; // 28
         let next = 0;
 
-        if (month in long) {
+        if (long.includes(month)) {
             next = day % 32;
-        } else if (month in med) {
+        } else if (med.includes(month)) {
             next = day % 31;
-        } else if (month in short) {
+        } else if (short.includes(month)) {
             next = day % 29;
         }
 
@@ -34,11 +34,11 @@ export function Calendars() {
         let short = [2]; // 28
         let prev = 0;
 
-        if (month in long) {
+        if (long.includes(month)) {
             prev = day === 0 ? 31 : day % 31;
-        } else if (month in med) {
+        } else if (med.includes(month)) {
             prev = day === 0 ? 30 : day % 30;
-        } else if (month in short) {
+        } else if (short.includes(month)) {
             prev = day === 0 ? 28 : day % 28;
         }
 
@@ -48,17 +48,27 @@ export function Calendars() {
     const getDate = (month, day) => {
         let newDay = day;
 
+        // console.log(newDay);
+
         if (day > 21) {
+            console.log("Next");
             newDay = getNext(month, day);
         } else if (day < 7) {
+            console.log("Prev");
             newDay = getPrev(month, day);
         }
+
+        // console.log(newDay);
 
         if (newDay < day) {
             month += 1;
         } else if (newDay > day) {
             month -= 1;
         }
+
+        console.log(day, newDay);
+
+        month += 1;
 
         month = month < 10 ? '0' + month : month;
         day = day < 10 ? '0' + day : day;
@@ -89,6 +99,8 @@ export function Calendars() {
         const date = today.getDate();
         const month = today.getMonth();
         const year = today.getFullYear();
+
+        // console.log(day, date, month, year)
         // let week = []
         // var min = 0;
         // // var minMonth = month
@@ -108,69 +120,69 @@ export function Calendars() {
         // }
 
         switch (day) {
-            case 'Mon':
+            case 1:
                 // month = date > (mod - 7) ? 0 : 0
-                week.append(getDate(month, date));
-                week.append(getDate(month, date + 1));
-                week.append(getDate(month, date + 2));
-                week.append(getDate(month, date + 3));
-                week.append(getDate(month, date + 4));
-                week.append(getDate(month, date + 5));
-                week.append(getDate(month, date + 6));
+                week.push(getDate(month, date));
+                week.push(getDate(month, date + 1));
+                week.push(getDate(month, date + 2));
+                week.push(getDate(month, date + 3));
+                week.push(getDate(month, date + 4));
+                week.push(getDate(month, date + 5));
+                week.push(getDate(month, date + 6));
                 break;
-            case 'Tue':
-                week.append(getDate(month, date - 1));
-                week.append(getDate(month, date));
-                week.append(getDate(month, date + 1));
-                week.append(getDate(month, date + 2));
-                week.append(getDate(month, date + 3));
-                week.append(getDate(month, date + 4));
-                week.append(getDate(month, date + 5));
+            case 2:
+                week.push(getDate(month, date - 1));
+                week.push(getDate(month, date));
+                week.push(getDate(month, date + 1));
+                week.push(getDate(month, date + 2));
+                week.push(getDate(month, date + 3));
+                week.push(getDate(month, date + 4));
+                week.push(getDate(month, date + 5));
                 break;
-            case 'Wed':
-                week.append(getDate(month, date - 2));
-                week.append(getDate(month, date - 1));
-                week.append(getDate(month, date));
-                week.append(getDate(month, date + 1));
-                week.append(getDate(month, date + 2));
-                week.append(getDate(month, date + 3));
-                week.append(getDate(month, date + 4));
+            case 3:
+                week.push(getDate(month, date - 2));
+                week.push(getDate(month, date - 1));
+                week.push(getDate(month, date));
+                week.push(getDate(month, date + 1));
+                week.push(getDate(month, date + 2));
+                week.push(getDate(month, date + 3));
+                week.push(getDate(month, date + 4));
                 break;
-            case 'Thu':
-                week.append(getDate(month, date - 3));
-                week.append(getDate(month, date - 2));
-                week.append(getDate(month, date - 1));
-                week.append(getDate(month, date));
-                week.append(getDate(month, date + 1));
-                week.append(getDate(month, date + 2));
-                week.append(getDate(month, date + 3));
+            case 4:
+                week.push(getDate(month, date - 3));
+                week.push(getDate(month, date - 2));
+                week.push(getDate(month, date - 1));
+                week.push(getDate(month, date));
+                week.push(getDate(month, date + 1));
+                week.push(getDate(month, date + 2));
+                week.push(getDate(month, date + 3));
                 break;
-            case 'Fri':
-                week.append(getDate(month, date - 4));
-                week.append(getDate(month, date - 3));
-                week.append(getDate(month, date - 2));
-                week.append(getDate(month, date - 1));
-                week.append(getDate(month, date));
-                week.append(getDate(month, date + 1));
-                week.append(getDate(month, date + 2));
+            case 5:
+                week.push(getDate(month, date - 4));
+                week.push(getDate(month, date - 3));
+                week.push(getDate(month, date - 2));
+                week.push(getDate(month, date - 1));
+                week.push(getDate(month, date));
+                week.push(getDate(month, date + 1));
+                week.push(getDate(month, date + 2));
                 break;
-            case 'Sat':
-                week.append(getDate(month, date - 5));
-                week.append(getDate(month, date - 4));
-                week.append(getDate(month, date - 3));
-                week.append(getDate(month, date - 2));
-                week.append(getDate(month, date - 1));
-                week.append(getDate(month, date));
-                week.append(getDate(month, date + 1));
+            case 6:
+                week.push(getDate(month, date - 5));
+                week.push(getDate(month, date - 4));
+                week.push(getDate(month, date - 3));
+                week.push(getDate(month, date - 2));
+                week.push(getDate(month, date - 1));
+                week.push(getDate(month, date));
+                week.push(getDate(month, date + 1));
                 break;
-            case 'Sun':
-                week.append(getDate(month, date - 6));
-                week.append(getDate(month, date - 5));
-                week.append(getDate(month, date - 4));
-                week.append(getDate(month, date - 3));
-                week.append(getDate(month, date - 2));
-                week.append(getDate(month, date - 1));
-                week.append(getDate(month, date));
+            case 0:
+                week.push(getDate(month, date - 6));
+                week.push(getDate(month, date - 5));
+                week.push(getDate(month, date - 4));
+                week.push(getDate(month, date - 3));
+                week.push(getDate(month, date - 2));
+                week.push(getDate(month, date - 1));
+                week.push(getDate(month, date));
                 break
         }
 
@@ -523,10 +535,10 @@ export function Calendars() {
         <main className="container-fluid bg-secondary text-center">
             <hr />
                 <h1>Animation</h1>
-                <form method="get" action="">
+                {/* <form method="get" action="">
                     <button type="submit" className="btn btn-primary" to="calendars">Prev</button>
                     <button type="submit" className="btn btn-primary" to="calendars">Next</button>
-                </form>
+                </form> */}
             <hr />
 
             <table border="1" width="100%" cellPadding="10" cellSpacing="0" >
@@ -561,10 +573,10 @@ export function Calendars() {
 
             <hr />
 
-            <form method="get" action="">
+            {/* <form method="get" action="">
                 <button type="submit" className="btn btn-primary" to="calendars">Prev</button>
                 <button type="submit" className="btn btn-primary" to="calendars">Next</button>
-            </form>
+            </form> */}
 
             <hr />
     </main>

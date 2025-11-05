@@ -23,7 +23,7 @@ export function Register(props) {
     });
     if (response?.status === 200) {
       localStorage.setItem('userName', userName);
-      props.onLogin(userName);
+      props.onRegister(userName);
     } else {
       const body = await response.json();
       setDisplayError(`⚠ Error: ${body.msg}`);
