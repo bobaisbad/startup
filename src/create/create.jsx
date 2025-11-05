@@ -9,7 +9,7 @@ import { Calendars } from '../calendars/calendars';
 export function Create({ poster }) {
     const navigate = useNavigate();
 
-    let eventID = localStorage.getItem('eventID');
+    // let eventID = localStorage.getItem('eventID');
     let eventName = '';
     let eventDate = '';
     let eventTime = '';
@@ -34,8 +34,18 @@ export function Create({ poster }) {
     } 
 
     async function createEvent() {
-        const eventsOBJ = localStorage.getItem('events');
-        let events = JSON.parse(eventsOBJ);
+        let events;
+        // const eventsOBJ = localStorage.getItem('events');
+        await fetch('/api/events')
+            // method: 'POST',
+            .then((response) => response.json())
+            .then((given) => {
+                events = given;
+            });
+            // headers: { 'content-type': 'application/json' },
+            // body: JSON.stringify(newScore),
+
+        // let events = JSON.parse(eventsOBJ);
         console.log(events);
         console.log(calendarTime);
         
@@ -73,9 +83,16 @@ export function Create({ poster }) {
                         break
                 }
 
-                localStorage.setItem('events', JSON.stringify(events));
+                // localStorage.setItem('events', JSON.stringify(events));
+                await fetch('/api/event', {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(events),
+                });
             }
         }
+
+        let eventID = uuid.v4();
 
         let finalJSON = { id: eventID,
                         name: eventName,
@@ -89,10 +106,15 @@ export function Create({ poster }) {
 
         console.log(finalJSON);
 
-        localStorage.setItem(eventID, JSON.stringify(finalJSON));
+        // localStorage.setItem(eventID, JSON.stringify(finalJSON));
+        await fetch('/api/detail', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(finalJSON),
+        });
 
-        eventID += 1;
-        localStorage.setItem('eventID', eventID);
+        // eventID += 1;
+        // localStorage.setItem('eventID', eventID);
     }
 
     return (

@@ -8,6 +8,7 @@ const authCookieName = 'token';
 
 let users = [];
 let events = [];
+let details = {};
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -20,7 +21,7 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-apiRouter.post('/auth/create', async (req, res) => {
+apiRouter.post('/auth/register', async (req, res) => {
     if (await findUser('email', req.body.email)) {
         res.status(409).send({ msg: 'Existing user' });
     } else {
@@ -67,8 +68,17 @@ apiRouter.get('/events', verifyAuth, (_req, res) => {
 });
 
 apiRouter.post('/event', verifyAuth, (req, res) => {
-    events = updateScores(req.body);
+    events = req.body;
     res.send(events);
+});
+
+apiRouter.get('/details', verifyAuth, (_req, res) => {
+    res.send(details);
+});
+
+apiRouter.post('/detail', verifyAuth, (req, res) => {
+    details = req.body;
+    res.send(details);
 });
 
 app.use(function (err, req, res, next) {

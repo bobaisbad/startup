@@ -14,7 +14,7 @@ export function Register(props) {
     // localStorage.setItem('userName', userName);
     // props.onRegister(userName);
 
-    const response = await fetch(`/api/auth/create`, {
+    const response = await fetch(`/api/auth/register`, {
       method: 'post',
       body: JSON.stringify({ email: userName, password: password }),
       headers: {
