@@ -23,6 +23,64 @@ export function Calendars() {
         if (!eventIDText) {
             localStorage.setItem('eventID', 0);
         }
+
+        const today = new Date();
+        const day = today.getDay();
+        const date = today.getDate();
+        const month = today.getMonth();
+        const year = today.getFullYear();
+        var min = 0;
+        // var minMonth = month
+        var max = 0;
+        var mod = 0;
+
+        if ((month === '0' || month === '2' || month === '4' || month === '6' || month === '7' || month === '9' || month === '11') && date >= 7) {
+            mod = 31;
+        } else if ((month === '3'  || month === '5'  || month === '8'  || month === '10') && date >= 7) {
+            mod = 30;
+        } else if ((month === '0' || month === '1' || month === '3' || month === '5' || month === '7' || month === '8' || month === '10') && date < 7) {
+            mod = 31;
+        } else if ((month === '4'  || month === '6'  || month === '9'  || month === '11') && date < 7) {
+            mod = 30;
+        } else {
+            mod = 28;
+        } 
+
+        if (day === 'Mon') {
+            min = date;
+            max = (date + 6) % mod;
+        } else if (day === 'Tue') {
+            min = (date - 1) % mod;
+            max = (date + 5) % mod;
+        } else if (day === 'Wed') {
+            min = (date - 2) % mod;
+            max = (date + 4) % mod;
+        } else if (day === 'Wed') {
+            min = (date - 3) % mod;
+            max = (date + 3) % mod;
+        } else if (day === 'Wed') {
+            min = (date - 4) % mod;
+            max = (date + 2) % mod;
+        } else if (day === 'Wed') {
+            min = (date - 5) % mod;
+            max = (date + 1) % mod;
+        } else {
+            min = (date - 6) % mod;
+            max = date;
+        }
+
+        if (min <= 0) {
+            min = mod + min
+        }
+
+        fetch(`https://holidays.abstractapi.com/v1/?api_key=09c2ff7e9fc84272b6261b18ac24f98c&country=US&year=${year}&month=${month}&day=`)
+            .then((response) => response.json())
+            .then((data) => {
+                data.forEach((item) => {
+                    // ???
+                });
+            })
+            .catch();
     }, []);
 
     const populate = () => {
