@@ -78,113 +78,143 @@ export function Calendars() {
         return date;
     };
 
+    // async function fetchEvents() {
+    //         let eventsText;
+
+    //         await fetch('/api/events')
+    //             // method: 'POST',
+    //             .then((response) => response.json())
+    //             .then((given) => {eventsText = given;})
+    //             .then(() => {return eventsText});
+
+    //         // return eventsText;
+    // }
+
     React.useEffect(() => {
         // console.log("Is it here?");
-        const eventsText = localStorage.getItem('events');
-        if (eventsText) {
-            setEvents(JSON.parse(eventsText));
-        } else {
-            console.log("Populating...")
-            populate();
-        }
+        // const eventsText = localStorage.getItem('events');
 
-        const eventIDText = localStorage.getItem('eventID');
-        // console.log("Or is it here?");
-        if (!eventIDText) {
-            localStorage.setItem('eventID', 0);
-        }
+        // let eventsText = fetchEvents();
+        let eventsText = [];
+        fetch('/api/events')
+            // method: 'POST',
+            .then((response) => response.json())
+            .then((given) => {
+                eventsText = given;
+                setEvents(given);
+        });
 
-        const today = new Date();
-        const day = today.getDay();
-        const date = today.getDate();
-        const month = today.getMonth();
-        const year = today.getFullYear();
+        // console.log(eventsText);
+        
+        // console.log(eventsText);
 
-        // console.log(day, date, month, year)
-        // let week = []
-        // var min = 0;
-        // // var minMonth = month
-        // var max = 0;
-        // let mod = 0;
-
-        // if ((month === 0 || month === 2 || month === 4 || month === 6 || month === 7 || month === 9 || month === 11) && date >= 7) {
-        //     mod = 31;
-        // } else if ((month === 3 || month === 5 || month === 8 || month === 10) && date >= 7) {
-        //     mod = 30;
-        // } else if ((month === 0 || month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10) && date < 7) {
-        //     mod = 31;
-        // } else if ((month === 4 || month === 6 || month === 9 || month === 11) && date < 7) {
-        //     mod = 30;
+        // if (eventsText[0]) {
+        //     console.log("Full already");
+        //     setEvents(eventsText);
         // } else {
-        //     mod = 28;
+        //     console.log("Populating...")
+        //     populate();
         // }
 
-        switch (day) {
-            case 1:
-                // month = date > (mod - 7) ? 0 : 0
-                week.push(getDate(month, date));
-                week.push(getDate(month, date + 1));
-                week.push(getDate(month, date + 2));
-                week.push(getDate(month, date + 3));
-                week.push(getDate(month, date + 4));
-                week.push(getDate(month, date + 5));
-                week.push(getDate(month, date + 6));
-                break;
-            case 2:
-                week.push(getDate(month, date - 1));
-                week.push(getDate(month, date));
-                week.push(getDate(month, date + 1));
-                week.push(getDate(month, date + 2));
-                week.push(getDate(month, date + 3));
-                week.push(getDate(month, date + 4));
-                week.push(getDate(month, date + 5));
-                break;
-            case 3:
-                week.push(getDate(month, date - 2));
-                week.push(getDate(month, date - 1));
-                week.push(getDate(month, date));
-                week.push(getDate(month, date + 1));
-                week.push(getDate(month, date + 2));
-                week.push(getDate(month, date + 3));
-                week.push(getDate(month, date + 4));
-                break;
-            case 4:
-                week.push(getDate(month, date - 3));
-                week.push(getDate(month, date - 2));
-                week.push(getDate(month, date - 1));
-                week.push(getDate(month, date));
-                week.push(getDate(month, date + 1));
-                week.push(getDate(month, date + 2));
-                week.push(getDate(month, date + 3));
-                break;
-            case 5:
-                week.push(getDate(month, date - 4));
-                week.push(getDate(month, date - 3));
-                week.push(getDate(month, date - 2));
-                week.push(getDate(month, date - 1));
-                week.push(getDate(month, date));
-                week.push(getDate(month, date + 1));
-                week.push(getDate(month, date + 2));
-                break;
-            case 6:
-                week.push(getDate(month, date - 5));
-                week.push(getDate(month, date - 4));
-                week.push(getDate(month, date - 3));
-                week.push(getDate(month, date - 2));
-                week.push(getDate(month, date - 1));
-                week.push(getDate(month, date));
-                week.push(getDate(month, date + 1));
-                break;
-            case 0:
-                week.push(getDate(month, date - 6));
-                week.push(getDate(month, date - 5));
-                week.push(getDate(month, date - 4));
-                week.push(getDate(month, date - 3));
-                week.push(getDate(month, date - 2));
-                week.push(getDate(month, date - 1));
-                week.push(getDate(month, date));
-                break
-        }
+        // console.log(events);
+
+        // const eventIDText = localStorage.getItem('eventID');
+        // console.log("Or is it here?");
+        // if (!eventIDText) {
+        //     localStorage.setItem('eventID', 0);
+        // }
+
+        // const today = new Date();
+        // const day = today.getDay();
+        // const date = today.getDate();
+        // const month = today.getMonth();
+        // const year = today.getFullYear();
+
+        // // console.log(day, date, month, year)
+        // // let week = []
+        // // var min = 0;
+        // // // var minMonth = month
+        // // var max = 0;
+        // // let mod = 0;
+
+        // // if ((month === 0 || month === 2 || month === 4 || month === 6 || month === 7 || month === 9 || month === 11) && date >= 7) {
+        // //     mod = 31;
+        // // } else if ((month === 3 || month === 5 || month === 8 || month === 10) && date >= 7) {
+        // //     mod = 30;
+        // // } else if ((month === 0 || month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10) && date < 7) {
+        // //     mod = 31;
+        // // } else if ((month === 4 || month === 6 || month === 9 || month === 11) && date < 7) {
+        // //     mod = 30;
+        // // } else {
+        // //     mod = 28;
+        // // }
+
+        // switch (day) {
+        //     case 1:
+        //         // month = date > (mod - 7) ? 0 : 0
+        //         week.push(getDate(month, date));
+        //         week.push(getDate(month, date + 1));
+        //         week.push(getDate(month, date + 2));
+        //         week.push(getDate(month, date + 3));
+        //         week.push(getDate(month, date + 4));
+        //         week.push(getDate(month, date + 5));
+        //         week.push(getDate(month, date + 6));
+        //         break;
+        //     case 2:
+        //         week.push(getDate(month, date - 1));
+        //         week.push(getDate(month, date));
+        //         week.push(getDate(month, date + 1));
+        //         week.push(getDate(month, date + 2));
+        //         week.push(getDate(month, date + 3));
+        //         week.push(getDate(month, date + 4));
+        //         week.push(getDate(month, date + 5));
+        //         break;
+        //     case 3:
+        //         week.push(getDate(month, date - 2));
+        //         week.push(getDate(month, date - 1));
+        //         week.push(getDate(month, date));
+        //         week.push(getDate(month, date + 1));
+        //         week.push(getDate(month, date + 2));
+        //         week.push(getDate(month, date + 3));
+        //         week.push(getDate(month, date + 4));
+        //         break;
+        //     case 4:
+        //         week.push(getDate(month, date - 3));
+        //         week.push(getDate(month, date - 2));
+        //         week.push(getDate(month, date - 1));
+        //         week.push(getDate(month, date));
+        //         week.push(getDate(month, date + 1));
+        //         week.push(getDate(month, date + 2));
+        //         week.push(getDate(month, date + 3));
+        //         break;
+        //     case 5:
+        //         week.push(getDate(month, date - 4));
+        //         week.push(getDate(month, date - 3));
+        //         week.push(getDate(month, date - 2));
+        //         week.push(getDate(month, date - 1));
+        //         week.push(getDate(month, date));
+        //         week.push(getDate(month, date + 1));
+        //         week.push(getDate(month, date + 2));
+        //         break;
+        //     case 6:
+        //         week.push(getDate(month, date - 5));
+        //         week.push(getDate(month, date - 4));
+        //         week.push(getDate(month, date - 3));
+        //         week.push(getDate(month, date - 2));
+        //         week.push(getDate(month, date - 1));
+        //         week.push(getDate(month, date));
+        //         week.push(getDate(month, date + 1));
+        //         break;
+        //     case 0:
+        //         week.push(getDate(month, date - 6));
+        //         week.push(getDate(month, date - 5));
+        //         week.push(getDate(month, date - 4));
+        //         week.push(getDate(month, date - 3));
+        //         week.push(getDate(month, date - 2));
+        //         week.push(getDate(month, date - 1));
+        //         week.push(getDate(month, date));
+        //         break
+        // }
 
         // if (day === 'Mon') {
         //     min = date;
@@ -223,7 +253,7 @@ export function Calendars() {
         //     .catch();
     }, []);
 
-    const populate = () => {
+    const populate = async () => {
         events.push({ time: 'All Day',
                         monday: { id: '', name: '' },
                         // tuesday: { id: '1', name: 'Holiday - Thanksgiving' },
@@ -452,8 +482,110 @@ export function Calendars() {
 
         // console.log(events);
         // setEvents(events);
-        localStorage.setItem('events', JSON.stringify(events));
+        // localStorage.setItem('events', JSON.stringify(events));
+        fetch('/api/event', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(events),
+        });
         // console.log("Got here");
+    }
+
+
+    // console.log(eventsText);
+
+    // let eventsText = [];
+    //     fetch('/api/events')
+    //         // method: 'POST',
+    //         .then((response) => response.json())
+    //         .then((given) => {
+    //             eventsText = given;
+    //             setEvents(given);
+    //     });
+
+    //     console.log(eventsText);
+
+    // if (events[0]) {
+    //     console.log("Full already");
+    //     // setEvents(eventsText);
+    // } else {
+    //     console.log("Populating...")
+    //     populate();
+    // }
+
+    // console.log(events);
+
+    const today = new Date();
+    const day = today.getDay();
+    const date = today.getDate();
+    const month = today.getMonth();
+    const year = today.getFullYear();
+
+    switch (day) {
+        case 1:
+            // month = date > (mod - 7) ? 0 : 0
+            week.push(getDate(month, date));
+            week.push(getDate(month, date + 1));
+            week.push(getDate(month, date + 2));
+            week.push(getDate(month, date + 3));
+            week.push(getDate(month, date + 4));
+            week.push(getDate(month, date + 5));
+            week.push(getDate(month, date + 6));
+            break;
+        case 2:
+            week.push(getDate(month, date - 1));
+            week.push(getDate(month, date));
+            week.push(getDate(month, date + 1));
+            week.push(getDate(month, date + 2));
+            week.push(getDate(month, date + 3));
+            week.push(getDate(month, date + 4));
+            week.push(getDate(month, date + 5));
+            break;
+        case 3:
+            week.push(getDate(month, date - 2));
+            week.push(getDate(month, date - 1));
+            week.push(getDate(month, date));
+            week.push(getDate(month, date + 1));
+            week.push(getDate(month, date + 2));
+            week.push(getDate(month, date + 3));
+            week.push(getDate(month, date + 4));
+            break;
+        case 4:
+            week.push(getDate(month, date - 3));
+            week.push(getDate(month, date - 2));
+            week.push(getDate(month, date - 1));
+            week.push(getDate(month, date));
+            week.push(getDate(month, date + 1));
+            week.push(getDate(month, date + 2));
+            week.push(getDate(month, date + 3));
+            break;
+        case 5:
+            week.push(getDate(month, date - 4));
+            week.push(getDate(month, date - 3));
+            week.push(getDate(month, date - 2));
+            week.push(getDate(month, date - 1));
+            week.push(getDate(month, date));
+            week.push(getDate(month, date + 1));
+            week.push(getDate(month, date + 2));
+            break;
+        case 6:
+            week.push(getDate(month, date - 5));
+            week.push(getDate(month, date - 4));
+            week.push(getDate(month, date - 3));
+            week.push(getDate(month, date - 2));
+            week.push(getDate(month, date - 1));
+            week.push(getDate(month, date));
+            week.push(getDate(month, date + 1));
+            break;
+        case 0:
+            week.push(getDate(month, date - 6));
+            week.push(getDate(month, date - 5));
+            week.push(getDate(month, date - 4));
+            week.push(getDate(month, date - 3));
+            week.push(getDate(month, date - 2));
+            week.push(getDate(month, date - 1));
+            week.push(getDate(month, date));
+            break
     }
 
     // React.useEffect(() => {

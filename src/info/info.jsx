@@ -29,17 +29,41 @@ export function Info({ name }) {
     
     let text = '';
 
+    console.log(id)
+
     if (!/^\d+$/.test(id)) {
         return <Navigate to="../not-found" />;
     }
 
-    const eventOBJ = localStorage.getItem(id);
+    let details = [];
+    fetch('/api/details')
+        // method: 'POST',
+        .then((response) => response.json())
+        .then((given) => {
+            details = given;
+    });
 
-    if (!eventOBJ) {
+    let event;
+    for (const [key, value] of details.entries()) {
+        if (key === id) {
+            event = value;
+        }
+    }
+
+    if (!event) {
         return <Navigate to="../not-found" />;
     }
 
-    const event = JSON.parse(eventOBJ);
+    console.log(`Returned event:`);
+    console.log(event);
+
+    // const eventOBJ = localStorage.getItem(id);
+
+    // if (!eventOBJ) {
+    //     return <Navigate to="../not-found" />;
+    // }
+
+    // const event = JSON.parse(eventOBJ);
 
     // const [scores, setScores] = React.useState([]);
     
@@ -149,17 +173,17 @@ export function Info({ name }) {
   );
 }
 
-export function RenderComments({ event }) {
-    const comments = event.comments;
-    console.log(comments);
-    const commentRows = [];
-    if (comments.length) {
-        for (const [i, comment] of comments.entries()) {
-            commentRows.push(
-                <p>{comment.name}: {comment.text}</p>
-            );
-        }
-    }
+// export function RenderComments({ event }) {
+//     const comments = event.comments;
+//     console.log(comments);
+//     const commentRows = [];
+//     if (comments.length) {
+//         for (const [i, comment] of comments.entries()) {
+//             commentRows.push(
+//                 <p>{comment.name}: {comment.text}</p>
+//             );
+//         }
+//     }
 
-    return commentRows;
-}
+//     return commentRows;
+// }

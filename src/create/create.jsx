@@ -6,10 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { Calendars } from '../calendars/calendars';
 
+// const uuid = require('uuid');
+
 export function Create({ poster }) {
     const navigate = useNavigate();
 
     // let eventID = localStorage.getItem('eventID');
+    let eventID = crypto.randomUUID();
     let eventName = '';
     let eventDate = '';
     let eventTime = '';
@@ -46,11 +49,12 @@ export function Create({ poster }) {
             // body: JSON.stringify(newScore),
 
         // let events = JSON.parse(eventsOBJ);
+        console.log(`Events:`);
         console.log(events);
-        console.log(calendarTime);
+        // console.log(calendarTime);
         
         for (const [i, event] of events.entries()) {
-            console.log(event);
+            // console.log(event);
             if (event.time === calendarTime) {
                 switch (eventDay) {
                     case 'monday':
@@ -92,8 +96,6 @@ export function Create({ poster }) {
             }
         }
 
-        let eventID = uuid.v4();
-
         let finalJSON = { id: eventID,
                         name: eventName,
                         date: eventDate,
@@ -104,6 +106,7 @@ export function Create({ poster }) {
                         rsvps: 0,
                         comments: [] };
 
+        console.log(`Final JSON:`);
         console.log(finalJSON);
 
         // localStorage.setItem(eventID, JSON.stringify(finalJSON));
