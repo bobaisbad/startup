@@ -1,12 +1,7 @@
 import React from 'react';
 import './calendars.css';
 
-export function Base({ events, setter }) {
-    // React.useEffect(() => {}, []);
-    
-    localStorage.setItem('eventID', 0);
-
-    // let events = [];
+export function Base({ events, setter }) {    
     events.push({ time: 'All Day',
                 monday: { id: '', name: '' },
                 tuesday: { id: '', name: '' },

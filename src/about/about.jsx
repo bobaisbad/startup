@@ -4,7 +4,6 @@ import './about.css';
 export function About() {
   return (
     <main className="container-fluid bg-secondary text-center">
-      {/* <main className="container-fluid bg-secondary text-center"> */}
       <div>
           <h1>About Get With Friends</h1>
           <p>
@@ -18,7 +17,6 @@ export function About() {
               <img width="400px" src="morning_byu.jpg" alt="random" />
           </div>
         </div>
-        {/* </main> */}
     </main>
   );
 }
