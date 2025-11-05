@@ -6,6 +6,7 @@ import { Base } from './base';
 export function Calendars() {
     const [events, setEvents] = React.useState([]);
     const [week, setWeek] = React.useState([]);
+    // const [eventRows, setEventRows] = React.useState([]);
 
     // Base(events, setEvents);
 
@@ -103,6 +104,34 @@ export function Calendars() {
                 eventsText = given;
                 setEvents(given);
         });
+
+        // const eventRows1 = [];
+        // if (events.length) {
+        //     for (const [i, event] of events.entries()) {
+        //         eventRows1.push(
+        //             <tr key={i}>
+        //                 {/* <NavLink to="../info">Holiday - All Day</NavLink> */}
+        //                 <td>{event.time}</td>
+        //                 {/* <td><NavLink to={'../info/' + event.monday.id}>{event.monday.name}</NavLink></td>
+        //                 <td><NavLink to={'../info/' + event.tuesday.id}>{event.tuesday.name}</NavLink></td>
+        //                 <td><NavLink to={'../info/' + event.wednesday.id}>{event.wednesday.name}</NavLink></td>
+        //                 <td><NavLink to={'../info/' + event.thursday.id}>{event.thursday.name}</NavLink></td>
+        //                 <td><NavLink to={'../info/' + event.friday.id}>{event.friday.name}</NavLink></td>
+        //                 <td><NavLink to={'../info/' + event.saturday.id}>{event.saturday.name}</NavLink></td>
+        //                 <td><NavLink to={'../info/' + event.sunday.id}>{event.sunday.name}</NavLink></td> */}
+        //                 <td><NavLink to={'../' + event.monday.id}>{event.monday.name}</NavLink></td>
+        //                 <td><NavLink to={'../' + event.tuesday.id}>{event.tuesday.name}</NavLink></td>
+        //                 <td><NavLink to={'../' + event.wednesday.id}>{event.wednesday.name}</NavLink></td>
+        //                 <td><NavLink to={'../' + event.thursday.id}>{event.thursday.name}</NavLink></td>
+        //                 <td><NavLink to={'../' + event.friday.id}>{event.friday.name}</NavLink></td>
+        //                 <td><NavLink to={'../' + event.saturday.id}>{event.saturday.name}</NavLink></td>
+        //                 <td><NavLink to={'../' + event.sunday.id}>{event.sunday.name}</NavLink></td>
+        //             </tr>
+        //         );
+        //     }
+        // }
+
+        // setEventRows(eventRows1);
 
         // console.log(eventsText);
         

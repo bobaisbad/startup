@@ -92,6 +92,7 @@ events.push({ time: '07:00 AM',
             friday: { id: '', name: '' },
             saturday: { id: '', name: '' },
             sunday: { id: '', name: '' } })
+
 events.push({ time: '08:00 AM',
             monday: { id: '', name: '' },
             tuesday: { id: '', name: '' },

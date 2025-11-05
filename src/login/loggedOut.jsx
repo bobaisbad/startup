@@ -1,12 +1,14 @@
 import React from 'react';
 
 import { useNavigate } from 'react-router-dom';
+import { MessageDialog } from './messageDialog';
 
 import Button from 'react-bootstrap/Button';
 
 export function LoggedOut(props) {
   const [userName, setUserName] = React.useState(props.userName);
   const [password, setPassword] = React.useState('');
+  const [displayError, setDisplayError] = React.useState(null);
   const navigate = useNavigate();
   
 //   const [displayError, setDisplayError] = React.useState(null);
@@ -70,7 +72,7 @@ export function LoggedOut(props) {
         {/* </form> */}
       </div>
 
-      {/* <MessageDialog message={displayError} onHide={() => setDisplayError(null)} /> */}
+      <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </>
   );
 }
