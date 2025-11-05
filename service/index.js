@@ -237,6 +237,8 @@ events.push({ time: '11:00 PM',
             saturday: { id: '', name: '' },
             sunday: { id: '', name: '' } })
 
+// console.log(events);
+
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 app.use(express.json());

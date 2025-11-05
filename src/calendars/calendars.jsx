@@ -105,6 +105,22 @@ export function Calendars() {
                 setEvents(given);
         });
 
+        fetch(`https://holidays.abstractapi.com/v1/?api_key=09c2ff7e9fc84272b6261b18ac24f98c&country=US&year=${year}&month=${month + 1}&day=${date}`)
+            .then((response) => response.json())
+            .then((data) => {
+                // data.forEach((item) => {
+                //     // ???
+                // });
+                // console.log(data);
+                if (data[0]) {
+                    let weekDay = data[0].week_day.toLowerCase();
+                    let name = data[0].name;
+                    events[0].weekDay.name = name;
+                    setEvents(events);
+                }
+            })
+            .catch();
+
         // const eventRows1 = [];
         // if (events.length) {
         //     for (const [i, event] of events.entries()) {
@@ -616,6 +632,17 @@ export function Calendars() {
             week.push(getDate(month, date));
             break
     }
+
+    // fetch(`https://holidays.abstractapi.com/v1/?api_key=09c2ff7e9fc84272b6261b18ac24f98c&country=US&year=${year}&month=${month}&day=`)
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             data.forEach((item) => {
+    //                 // ???
+    //             });
+    //         })
+    //         .catch();
+
+    
 
     // React.useEffect(() => {
     //     console.log("Is it here?");
