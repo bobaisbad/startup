@@ -41,7 +41,15 @@ function getEvents() {
 }
 
 async function addEvent(event) {
-  await eventCollection.insertOne(event);
+  const { _id, ...fields} = event;
+  console.log(event.time);
+  console.log(event);
+  try {
+    await eventCollection.updateOne({ time: event.time }, { $set: fields });
+  } catch (e) {
+    console.log(e.message);
+  }
+  console.log("Got here");
 }
 
 function getDetails() {

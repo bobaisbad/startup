@@ -91,8 +91,10 @@ export function Create({ poster }) {
                 await fetch('/api/event', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(events),
+                    body: JSON.stringify(event),
                 });
+
+                console.log(event);
             }
         }
 
