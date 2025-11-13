@@ -87,7 +87,7 @@ export function Calendars() {
                 if (data[0]) {
                     let weekDay = data[0].week_day.toLowerCase();
                     let name = data[0].name;
-                    events[0].weekDay.name = name;
+                    events[0][weekDay].name = name;
                     setEvents(events);
                 }
             })
