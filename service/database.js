@@ -6,6 +6,7 @@ const client = new MongoClient(url);
 const db = client.db('startup');
 const userCollection = db.collection('user');
 const eventCollection = db.collection('event');
+const detailCollection = db.collection('detail');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -34,9 +35,32 @@ async function updateUser(user) {
   await userCollection.updateOne({ email: user.email }, { $set: user });
 }
 
+function getEvents() {
+  return eventCollection.???();
+}
+
 async function addEvent(event) {
   return eventCollection.insertOne(event);
 }
+
+async function getDetails() {
+  //
+}
+
+async function addDetail(id, detail) {
+  const detail = {
+          id: id,
+          detail: detail,
+  };
+  // users.push(user);
+  return detailCollection.insertOne(detail);
+  // await DB.addUser(user);
+}
+
+// async function updateEvents(event) {
+//   await addEvent(newScore);
+//   return getEvents();
+// }
 
 // function getHighScores() {
 //   const query = { score: { $gt: 0, $lt: 900 } };
@@ -53,6 +77,8 @@ module.exports = {
   getUserByToken,
   addUser,
   updateUser,
+  getEvents,
   addEvent,
+  // updateEvents,
   // getHighScores,
 };

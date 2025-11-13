@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const DB = require('./database.js');
 
 const authCookieName = 'token';
 
@@ -266,6 +267,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
         user.token = uuid.v4();
+        await DB.updateUser(user);
         setAuthCookie(res, user.token);
         res.send({ email: user.email });
         return;
@@ -278,6 +280,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     if (user) {
         delete user.token;
+        DB.updateUser(user);
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
@@ -292,12 +295,18 @@ const verifyAuth = async (req, res, next) => {
     }
 };
 
-apiRouter.get('/events', verifyAuth, (_req, res) => {
+apiRouter.get('/events', verifyAuth, async (_req, res) => {
+    //////////////////////////////////////////
+    const events = await DB.getEvents(); ////////////////////////////////
+    //////////////////////////////////////////
     res.send(events);
 });
 
-apiRouter.post('/event', verifyAuth, (req, res) => {
-    events = req.body;
+apiRouter.post('/event', verifyAuth, async (req, res) => {
+    await DB.addEvent(req.body);
+    const events = await DB.getEvents();
+    // const events = updateEvents(req.body);
+    // events = req.body;
 
     console.log(`Newly posted events:`);
     console.log(events);
@@ -305,23 +314,29 @@ apiRouter.post('/event', verifyAuth, (req, res) => {
     res.send(events);
 });
 
-apiRouter.get('/details', verifyAuth, (_req, res) => {
+apiRouter.get('/details', verifyAuth, async (_req, res) => {
+    // const details = updateEvents(req.body);
+    //////////////////////////////////////////
+    const details = await DB.getDetails();
+    //////////////////////////////////////////
     res.send(details);
 });
 
-apiRouter.post('/detail', verifyAuth, (req, res) => {
+apiRouter.post('/detail', verifyAuth, async (req, res) => {
     let detail = req.body;
 
-    console.log(`Newly posted detail:`);
-    console.log(detail);
-    console.log(detail.id)
+    DB.addDetail(detail.id, detail);
 
-    details[detail.id] = detail;
+    // console.log(`Newly posted detail:`);
+    // console.log(detail);
+    // console.log(detail.id)
 
-    console.log(`Newly posted details:`);
-    console.log(details);
+    // details[detail.id] = detail;
 
-    res.send(details);
+    // console.log(`Newly posted details:`);
+    // console.log(details);
+
+    res.send(detail);
 });
 
 app.use(function (err, req, res, next) {
@@ -332,6 +347,11 @@ app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
 });
 
+async function updateScores(newScore) {
+  await DB.addScore(newScore);
+  return DB.getHighScores();
+}
+
 async function createUser(email, password) {
     const passwordHash = await bcrypt.hash(password, 10);
 
@@ -340,7 +360,8 @@ async function createUser(email, password) {
         password: passwordHash,
         token: uuid.v4(),
     };
-    users.push(user);
+    // users.push(user);
+    await DB.addUser(user);
 
     return user;
 }
@@ -348,7 +369,12 @@ async function createUser(email, password) {
 async function findUser(field, value) {
     if (!value) return null;
 
-    return users.find((u) => u[field] === value);
+    if (field === 'token') {
+        return DB.getUserByToken(value);
+    }
+
+    // return users.find((u) => u[field] === value);
+    return DB.getUser(value);
 }
 
 function setAuthCookie(res, authToken) {
