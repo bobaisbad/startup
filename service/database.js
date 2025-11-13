@@ -52,8 +52,14 @@ async function addEvent(event) {
   console.log("Got here");
 }
 
-function getDetails() {
-  return detailCollection.find({});
+async function getDetails() {
+  // try {
+  return await detailCollection.find({}).toArray();
+  // } catch (e) {
+  //   console.log(e.message);
+  // }
+
+  // return
 }
 
 async function addDetail(id, detail) {

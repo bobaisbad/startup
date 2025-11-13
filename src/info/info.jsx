@@ -15,18 +15,26 @@ export function Info({ name }) {
         fetch('/api/details')
             .then((response) => response.json())
             .then((given) => {
+                console.log(given);
                 details = given;
-                for (const [key, value] of Object.entries(details)) {
-                    if (key === id) {
-                        setEvent(value);
+                // for (const detail of details) { 
+                details.forEach(detail => {
+                    console.log(detail);
+                    console.log(id);
+                    console.log(detail.id);
+                    // for (const [key, value] of Object.entries(detail)) {
+                    if (detail.id === id) {
+                        console.log("setting...");
+                        setEvent(detail);
                     }
-                }
+                    // }
 
-                if (!event) {
-                    return <Navigate to="../not-found" />;
-                }
+                    if (!event) {
+                        return <Navigate to="../not-found" />;
+                    }
+                });
         });
-    });
+    }, []);
 
     return (
         <main className="container-fluid bg-secondary text-center">
