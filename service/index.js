@@ -347,10 +347,10 @@ app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
 });
 
-async function updateScores(newScore) {
-  await DB.addScore(newScore);
-  return DB.getHighScores();
-}
+// async function updateScores(newScore) {
+//   await DB.addScore(newScore);
+//   return DB.getHighScores();
+// }
 
 async function createUser(email, password) {
     const passwordHash = await bcrypt.hash(password, 10);

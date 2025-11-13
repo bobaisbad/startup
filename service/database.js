@@ -36,15 +36,16 @@ async function updateUser(user) {
 }
 
 function getEvents() {
-  return eventCollection.???();
+  return eventCollection.find({});
+  // return await eventCollection.find({}).toArray();
 }
 
 async function addEvent(event) {
-  return eventCollection.insertOne(event);
+  await eventCollection.insertOne(event);
 }
 
-async function getDetails() {
-  //
+function getDetails() {
+  return detailCollection.find({});
 }
 
 async function addDetail(id, detail) {
@@ -53,7 +54,7 @@ async function addDetail(id, detail) {
           detail: detail,
   };
   // users.push(user);
-  return detailCollection.insertOne(detail);
+  return await detailCollection.insertOne(detail);
   // await DB.addUser(user);
 }
 
@@ -79,6 +80,8 @@ module.exports = {
   updateUser,
   getEvents,
   addEvent,
+  getDetails,
+  addDetail,
   // updateEvents,
   // getHighScores,
 };
