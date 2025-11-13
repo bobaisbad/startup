@@ -36,8 +36,8 @@ async function updateUser(user) {
 }
 
 function getEvents() {
-  return eventCollection.find({});
-  // return await eventCollection.find({}).toArray();
+  // return eventCollection.find({});
+  return eventCollection.find({}).toArray();
 }
 
 async function addEvent(event) {
@@ -49,12 +49,12 @@ function getDetails() {
 }
 
 async function addDetail(id, detail) {
-  const detail = {
+  const detailJS = {
           id: id,
           detail: detail,
   };
   // users.push(user);
-  return await detailCollection.insertOne(detail);
+  return await detailCollection.insertOne(detailJS);
   // await DB.addUser(user);
 }
 
