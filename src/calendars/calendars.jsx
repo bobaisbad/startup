@@ -84,9 +84,10 @@ export function Calendars() {
         fetch(`https://holidays.abstractapi.com/v1/?api_key=09c2ff7e9fc84272b6261b18ac24f98c&country=US&year=${year}&month=${month + 1}&day=${date}`)
             .then((response) => response.json())
             .then((data) => {
-                if (data[0]) {
+                if (data[0] && events[0]) {
                     let weekDay = data[0].week_day.toLowerCase();
                     let name = data[0].name;
+                    console.log(events);
                     events[0][weekDay].name = name;
                     setEvents(events);
                 }
