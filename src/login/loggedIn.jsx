@@ -4,8 +4,16 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 
+import { Event, EventNotifier } from './eventNotifier';
+
 export function LoggedIn(props) {
   const navigate = useNavigate();
+
+  const [events, setEvent] = React.useState([]);
+
+  function handleEvent(event) {
+    setEvent([...events, event]);
+  }
 
   async function logoutUser() {
     // localStorage.removeItem('userName');
@@ -20,6 +28,8 @@ export function LoggedIn(props) {
       .finally(() => {
         localStorage.removeItem('userName');
         props.onLogout();
+
+        EventNotifier.removeHandler(handleEvent);
       });
   }
 

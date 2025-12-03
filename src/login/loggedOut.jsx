@@ -5,11 +5,19 @@ import { MessageDialog } from './messageDialog';
 
 import Button from 'react-bootstrap/Button';
 
+import { Event, EventNotifier } from './eventNotifier';
+
 export function LoggedOut(props) {
   const [userName, setUserName] = React.useState(props.userName);
   const [password, setPassword] = React.useState('');
   const [displayError, setDisplayError] = React.useState(null);
   const navigate = useNavigate();
+
+  const [events, setEvent] = React.useState([]);
+
+  function handleEvent(event) {
+    setEvent([...events, event]);
+  }
   
 //   const [displayError, setDisplayError] = React.useState(null);
 
@@ -29,6 +37,8 @@ export function LoggedOut(props) {
     if (response?.status === 200) {
       localStorage.setItem('userName', userName);
       props.onLogin(userName);
+
+      EventNotifier.addHandler(handleEvent);
     } else {
       const body = await response.json();
       setDisplayError(`⚠ Error: ${body.msg}`);

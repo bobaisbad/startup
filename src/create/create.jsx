@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { Calendars } from '../calendars/calendars';
 
+import { Event, EventNotifier } from '../login/eventNotifier';
+
 // const uuid = require('uuid');
 
 export function Create({ poster }) {
@@ -117,6 +119,8 @@ export function Create({ poster }) {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(finalJSON),
         });
+
+        EventNotifier.broadcastEvent(poster, Event.Create, finalJSON);
 
         // eventID += 1;
         // localStorage.setItem('eventID', eventID);
