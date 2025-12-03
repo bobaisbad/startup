@@ -23,10 +23,10 @@ class NewEventNotifier {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
     this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
     this.socket.onopen = (event) => {
-      this.receiveEvent(new EventMessage('Simon', Event.System, { msg: 'connected' }));
+      this.receiveEvent(new EventMessage('Startup', Event.System, { msg: 'connected' }));
     };
     this.socket.onclose = (event) => {
-      this.receiveEvent(new EventMessage('Simon', Event.System, { msg: 'disconnected' }));
+      this.receiveEvent(new EventMessage('Startup', Event.System, { msg: 'disconnected' }));
     };
     this.socket.onmessage = async (msg) => {
       try {
@@ -50,13 +50,17 @@ class NewEventNotifier {
   }
 
   receiveEvent(event) {
-    this.events.push(event);
+    // this.events.push(event);
 
-    this.events.forEach((e) => {
-      this.handlers.forEach((handler) => {
-        handler(e);
-      });
+    // this.events.forEach((e) => {
+    //   this.handlers.forEach((handler) => {
+    //     handler(e);
+    //   });
+    // });
+    this.handlers.forEach((handler) => {
+      handler(event);
     });
+
   }
 }
 

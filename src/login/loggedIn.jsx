@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useNavigate } from 'react-router-dom';
+import { MessageDialog } from './messageDialog';
 
 import Button from 'react-bootstrap/Button';
 
@@ -9,10 +10,23 @@ import { Event, EventNotifier } from './eventNotifier';
 export function LoggedIn(props) {
   const navigate = useNavigate();
 
-  const [events, setEvent] = React.useState([]);
+  const [events, setEvent] = React.useState('');
+  const [displayError, setDisplayError] = React.useState(null);
 
   function handleEvent(event) {
     setEvent([...events, event]);
+
+    let message = 'unknown';
+
+    if (event.type === Event.Create) {
+      message = `${event.poster} created a new event: ${event.eventName} @ ${event.eventTime} on ${event.eventDate}`;
+    } else if (event.type === Event.Delete) {
+      message = `${event.poster} deleted an event: ${event.eventName} @ ${event.eventTime} on ${event.eventDate}`;
+    } else if (event.type === Event.System) {
+      message = event.value.msg;
+    }
+    
+    setDisplayError(message); // `⚠ Error: ${hhh}`);
   }
 
   async function logoutUser() {
@@ -50,7 +64,7 @@ export function LoggedIn(props) {
         {/* </form> */}
       </div>
 
-      {/* <MessageDialog message={displayError} onHide={() => setDisplayError(null)} /> */}
+      <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </>
   );
 }

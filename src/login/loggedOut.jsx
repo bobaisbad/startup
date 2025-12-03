@@ -13,10 +13,22 @@ export function LoggedOut(props) {
   const [displayError, setDisplayError] = React.useState(null);
   const navigate = useNavigate();
 
-  const [events, setEvent] = React.useState([]);
+  const [events, setEvent] = React.useState('');
 
   function handleEvent(event) {
     setEvent([...events, event]);
+
+    let message = 'unknown';
+    
+    if (event.type === Event.Create) {
+      message = `${event.poster} created a new event: ${event.eventName} @ ${event.eventTime} on ${event.eventDate}`;
+    } else if (event.type === Event.Delete) {
+      message = `${event.poster} deleted an event: ${event.eventName} @ ${event.eventTime} on ${event.eventDate}`;
+    } else if (event.type === Event.System) {
+      message = event.value.msg;
+    }
+    
+    setDisplayError(message); // `⚠ Error: ${hhh}`);
   }
   
 //   const [displayError, setDisplayError] = React.useState(null);
