@@ -25,11 +25,13 @@ export default function App() {
     setEvent([...events, event]);
 
     let message = 'unknown';
+
+    console.log(event);
     
     if (event.type === Event.Create) {
-      message = `${event.poster} created a new event: ${event.eventName} @ ${event.eventTime} on ${event.eventDate}`;
+      message = `${event.from} created a new event: ${event.value.name} @ ${event.value.time} on ${event.value.date}`;
     } else if (event.type === Event.Delete) {
-      message = `${event.poster} deleted an event: ${event.eventName} @ ${event.eventTime} on ${event.eventDate}`;
+      message = `${event.from} deleted an event: ${event.value.name} @ ${event.value.time} on ${event.value.date}`;
     } else if (event.type === Event.System) {
       message = event.value.msg;
     }
