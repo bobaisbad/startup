@@ -10,22 +10,32 @@ export function Info({ name }) {
     // const [week, setWeek] = React.useState([]);
     const { id } = useParams();
 
+    // let event = [];
+
     React.useEffect(() => {
         let details = [];
+        let done = false;
+
         fetch('/api/details')
             .then((response) => response.json())
             .then((given) => {
                 console.log(given);
                 details = given;
                 // for (const detail of details) { 
-                details.forEach(detail => {
-                    console.log(detail);
-                    console.log(id);
-                    console.log(detail.id);
-                    // for (const [key, value] of Object.entries(detail)) {
-                    if (detail.id === id) {
-                        console.log("setting...");
-                        setEvent(detail);
+                details.forEach(detaille => {
+                    if (!done) {
+                        console.log(detaille);
+                        console.log(id);
+                        console.log(detaille.id);
+                        // for (const [key, value] of Object.entries(detail)) {
+                        if (detaille.id === id) {
+                            console.log("setting...");
+                            setEvent(detaille);
+                            // console.log(detaille);
+                            setEvent({ name: detaille.detail.name, date: detaille.detail.date, time: detaille.detail.time, details: detaille.detail.details, poster: detaille.detail.poster });
+                            // event = detail;
+                            done = true;
+                        }
                     }
                     // }
 
@@ -35,6 +45,21 @@ export function Info({ name }) {
                 });
         });
     }, []);
+
+    // console.log("event: " + typeof event);
+    // console.log("event.detail: " + typeof event.detail);
+    // let details = event.detail;
+    // console.log("details: " + typeof details);
+    // console.log("details.name: " + typeof details.name);
+    // console.log("event.detail.name: " + typeof event.detail.name);
+    // console.log(details);
+    // console.log("Got here");
+
+    // for (const [i, detail] of event.entries()) {
+    //     console.log(detail);
+    // }
+
+    // console.log(event.name);
 
     return (
         <main className="container-fluid bg-secondary text-center">
