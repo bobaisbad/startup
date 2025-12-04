@@ -10,10 +10,34 @@ import { Create } from './create/create';
 import { Info } from './info/info';
 import { Register } from './register/register';
 
+import { MessageDialog } from './register/messageDialog';
+import { Event, EventNotifier } from './login/eventNotifier';
+
 export default function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? true : false;
   const [authState, setAuthState] = React.useState(currentAuthState);
+
+  const [events, setEvent] = React.useState('');
+  const [displayError, setDisplayError] = React.useState(null);
+  
+  function handleEvent(event) {
+    setEvent([...events, event]);
+
+    let message = 'unknown';
+    
+    if (event.type === Event.Create) {
+      message = `${event.poster} created a new event: ${event.eventName} @ ${event.eventTime} on ${event.eventDate}`;
+    } else if (event.type === Event.Delete) {
+      message = `${event.poster} deleted an event: ${event.eventName} @ ${event.eventTime} on ${event.eventDate}`;
+    } else if (event.type === Event.System) {
+      message = event.value.msg;
+    }
+    
+    setDisplayError(message); // `⚠ Error: ${hhh}`);
+  }
+
+  EventNotifier.addHandler(handleEvent);
 
   return (
     <BrowserRouter>
@@ -114,6 +138,9 @@ export default function App() {
           </div>
         </footer>
       </div>
+
+      {authState && displayError !== "connected" && (<MessageDialog message={displayError} onHide={() => setDisplayError(null)} />)}
+        
     </BrowserRouter>
   );
 }
